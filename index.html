@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Данный сайт содержит информацию о красивейших местах планеты, с фото-галереей">
+    <meta name="author" content="Наталья Шлыкова">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
+</head>
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="Логотип">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <div class="profile__avatar">
+        <img class="profile__avatar-image" src="./images/image kusto.jpg" alt="Жак-ив Кусто фото">
+        <div class="profile__info">
+          <div class="profile__name">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__editButton" aria-label="редактировать"></button>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+      </div>
+      <button type="button" class="profile__addButton" aria-label="добавить"></button>
+    </section>
+    <section class="elements">
+      <div class="element">
+        <img class="element__image" src="./images/6 images/akmaral-khudaikulova-S4yT69sCTwo-unsplash.jpg" alt="БАО Алматы">
+        <div class="element__info">
+          <h2 class="element__text">БАО Алматы</h2>
+          <button type="button" class="element__button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/6 images/anita-austvika-8ZhEwL7VeS4-unsplash.jpg" alt="Зеленый лес Сибири">
+        <div class="element__info">
+          <h2 class="element__text">Сибирь</h2>
+          <button type="button" class="element__button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/6 images/arman-tpIDyt8ocF8-unsplash.jpg" alt="Гостинница Казахстан (Алматы)">
+        <div class="element__info">
+          <h2 class="element__text">Алматы</h2>
+          <button type="button" class="element__button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/6 images/forzaalisherka-4Nw842mSeS0-unsplash.jpg" alt="Чарынский каньон">
+        <div class="element__info">
+          <h2 class="element__text">Чарынский каньон</h2>
+          <button type="button" class="element__button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/6 images/j-b-gZ6xdxSKxas-unsplash.jpg" alt="Астанинский чупачупс">
+        <div class="element__info">
+          <h2 class="element__text">Астана</h2>
+          <button type="button" class="element__button" aria-label="лайк"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/6 images/visit-almaty-wN4D-mVR7fE-unsplash.jpg" alt="Горнолыжный курорт Чимбулак">
+        <div class="element__info">
+          <h2 class="element__text">Чимбулак</h2>
+          <button type="button" class="element__button" aria-label="лайк"></button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__text">© 2022 Mesto Russia</p>
+  </footer>
+  <!--Разметка для скрипта-->
+  <!--Попап редактирования профиля-->
+  <div class="popap">
+    <div class="popap__container">
+      <button type="button" class="popap__close" aria-label="Закрыть"></button>
+      <h3 class="popap__title">Редактировать профиль</h3>
+      <form class="popap__form">
+        <input type="text" class="popap__input" name="name" value="Жак-Ив Кусто">
+        <input type="text" class="popap__input" name="work" value="Исследователь океана">
+        <button type="submit" class="popap__submit" aria-label="сохранить">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+  </body>
+  </html>

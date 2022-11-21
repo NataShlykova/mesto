@@ -1,0 +1,25 @@
+.popap__close {
+  width: 32px;
+  height: 32px;
+  background: url(../../../images/Close\ Icon.png) no-repeat;
+  background-position: center;
+  padding: 0;
+  border: none;
+  top: -40px;
+  right: -40px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.popap__close:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 1275px) {
+    .popap__close {
+        width: 20px;
+        height: 20px;
+        top: -37px;
+        right: 0px;
+    }
+}
