@@ -2,7 +2,8 @@
   width: 24px;
   height: 24px;
   border: 1px solid #fff;
-  background: transparent url(../../../images/Vector.png) no-repeat;
+  background: transparent url(../../../images/Vector2.svg) no-repeat;
+  background-size: 10px;
   background-position: center;
   align-self: center;
   padding: 0;
