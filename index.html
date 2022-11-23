@@ -7,87 +7,87 @@
     <meta name="description" content="Данный сайт содержит информацию о красивейших местах планеты, с фото-галереей">
     <meta name="author" content="Наталья Шлыкова">
     <link rel="stylesheet" href="./pages/index.css">
-    <title>Mesto</title>
+    <title lang="en">Mesto</title>
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип">
+    <img class="header__logo" src="./images/logo.svg" alt="Логотип Место">
   </header>
   <main class="content">
     <section class="profile">
       <div class="profile__avatar">
-        <img class="profile__avatar-image" src="./images/imagekusto.jpg" alt="Жак-ив Кусто фото">
+        <img class="profile__avatar-image" src="./images/imagekusto.jpg" alt="Аватар">
         <div class="profile__info">
           <div class="profile__name">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__editButton" aria-label="редактировать"></button>
+            <button type="button" class="profile__edit-button" aria-label="Редактировать профиль"></button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
       </div>
-      <button type="button" class="profile__addButton" aria-label="добавить"></button>
+      <button type="button" class="profile__add-button" aria-label="Добавить изображение"></button>
     </section>
     <section class="elements">
-      <div class="element">
+      <article class="element">
         <img class="element__image" src="./images/6images/бао.jpg" alt="БАО Алматы">
         <div class="element__info">
           <h2 class="element__text">БАО Алматы</h2>
-          <button type="button" class="element__button" aria-label="лайк"></button>
+          <button type="button" class="element__button" aria-label="Мне нравится"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img class="element__image" src="./images/6images/сибирь.jpg" alt="Зеленый лес Сибири">
         <div class="element__info">
           <h2 class="element__text">Сибирь</h2>
-          <button type="button" class="element__button" aria-label="лайк"></button>
+          <button type="button" class="element__button" aria-label="Мне нравится"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img class="element__image" src="./images/6images/алматы.jpg" alt="Гостинница Казахстан (Алматы)">
         <div class="element__info">
           <h2 class="element__text">Алматы</h2>
-          <button type="button" class="element__button" aria-label="лайк"></button>
+          <button type="button" class="element__button" aria-label="Мне нравится"></button>
         </div>
-      </div>
+      </article>
       <div class="element">
         <img class="element__image" src="./images/6images/чарын.jpg" alt="Чарынский каньон">
         <div class="element__info">
           <h2 class="element__text">Чарынский каньон</h2>
-          <button type="button" class="element__button" aria-label="лайк"></button>
+          <button type="button" class="element__button" aria-label="Мне нравится"></button>
         </div>
       </div>
-      <div class="element">
+      <article class="element">
         <img class="element__image" src="./images/6images/Байтерек.jpg" alt="Астанинский чупачупс">
         <div class="element__info">
           <h2 class="element__text">Астана</h2>
-          <button type="button" class="element__button" aria-label="лайк"></button>
+          <button type="button" class="element__button" aria-label="Мне нравится"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img class="element__image" src="./images/6images/чимбулак.jpg" alt="Горнолыжный курорт Чимбулак">
         <div class="element__info">
           <h2 class="element__text">Чимбулак</h2>
-          <button type="button" class="element__button" aria-label="лайк"></button>
+          <button type="button" class="element__button" aria-label="Мне нравится"></button>
         </div>
-      </div>
+      </article>
     </section>
   </main>
   <footer class="footer">
-    <p class="footer__text">© 2022 Mesto Russia</p>
+    <p class="footer__text" lang="en">&copy; 2022 Mesto Russia</p>
   </footer>
   <!--Разметка для скрипта-->
   <!--Попап редактирования профиля-->
-  <div class="popap">
-    <div class="popap__container">
-      <button type="button" class="popap__close" aria-label="Закрыть"></button>
-      <h3 class="popap__title">Редактировать профиль</h3>
-      <form class="popap__form">
-        <input type="text" class="popap__input" name="name" value="Жак-Ив Кусто">
-        <input type="text" class="popap__input" name="work" value="Исследователь океана">
-        <button type="submit" class="popap__submit" aria-label="сохранить">Сохранить</button>
+  <div class="popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form class="popup__form" name="popup">
+        <input type="text" class="popup__input popup__input_name" name="name" placeholder="ваше имя">
+        <input type="text" class="popup__input popup__input_work" name="work" placeholder="ваша деятельность">
+        <button type="submit" class="popup__submit">Сохранить</button>
       </form>
     </div>
   </div>
-  <script src="./script.js"></script>
+  <script src="./scripts/index.js" defer></script>
   </body>
   </html>
