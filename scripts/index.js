@@ -9,10 +9,10 @@ const profileTitle = document.querySelector('.profile__title'); // имя в п�
 const profileWork = document.querySelector('.profile__subtitle'); // название деятельности на странице
 
 const openAddButton = document.querySelector('.profile__add-button'); // кнопка добавления изображений на странице 
-const popupAddButton = document.querySelector('.popup__add-button'); // попап добавления изображений 
+const popupAddButton = document.querySelector('.popup_add_button'); // попап добавления изображений 
 const popupCloseAddButton = document.querySelector('.popup__close-button-add'); // кнопка закрытия попапа добавления изображений
 
-const popupImage =document.querySelector('.popup__image'); //попап  изображения
+const popupImage =document.querySelector('.popup_image'); //попап  изображения
 const popupCloseButtonZoom = document.querySelector('.popup__close-button-zoom'); // кнопка закрытия увеличенного изображения
 
 
