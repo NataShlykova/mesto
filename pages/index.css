@@ -51,3 +51,11 @@
 @import url(../blocks/popup/__paragraph/popup__paragraph.css);
 @import url(../blocks/popup/__image-container.css/popup__image-container.css);
 @import url(../blocks/popup/_button_edit/popup_button_edit.css);
+
+@import url(../blocks/popup/__error-input/popup__error-input.css);
+@import url(../blocks/popup/__error-input/_active/popup__error-input_active.css);
+@import url(../blocks/popup/__submit/_disabled/popup__submit_disabled.css);
+
+
+
+

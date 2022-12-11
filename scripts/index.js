@@ -7,7 +7,8 @@ const inputForm = document.querySelector('.popup__form'); // форма попа
 const profileTitle = document.querySelector('.profile__title'); // имя в профиле на странице
 const profileWork = document.querySelector('.profile__subtitle'); // название деятельности на странице
 const openAddButton = document.querySelector('.profile__add-button'); // кнопка добавления изображений на странице 
-const popupAddButton = document.querySelector('.popup_add_button'); // попап добавления изображений 
+const popupAddButton = document.querySelector('.popup_add_button'); // попап добавления изображений
+const popupButtonSubmit  =  popupAddButton.querySelector ('.popup__submit'); // кнопка СОЗДАТЬ в попапе добавления изображений
 const popupCloseAddButton = document.querySelector('.popup__close-button-add'); // кнопка закрытия попапа добавления изображений
 const popupImage =document.querySelector('.popup_image'); //попап  изображения
 const popupCloseButtonZoom = document.querySelector('.popup__close-button-zoom'); // кнопка закрытия увеличенного изображения
@@ -18,6 +19,8 @@ const elementParagraph = document.querySelector ('.popup__paragraph');// тек�
 const popupBigImage = document.querySelector ('.popup__img'); // увеличенное изображение в попапе
 const strigNamePhoto = document.querySelector ('.popup__input_string_name-photo'); // поле ввода наименования места в попапе добавления изображения
 const stringLinkPhoto = document.querySelector ('.popup__input_string_link'); //поле ввода ссылки в попапе добавления изображения
+const popupOpened  = document.querySelector ('.popup_opened'); //файл для открытия попапа
+
 const initialElements = [  // изображения в массиве
     {
       name: 'БАО Алматы',
@@ -44,22 +47,45 @@ const initialElements = [  // изображения в массиве
       link: './images/6images/чимбулак.jpg'
     }
   ];
+
+ // функция звкрытия попапа нажатием на Escape
+ function closeClickEsc (evt) {
+  if (evt.key === 'Escape') {
+    closePopup (popupOpened);
+  }
+ };
+
 //фунция открытия попапа 
 const openPopup = (openPopup) => {
-  openPopup.classList.add('popup_opened');  
+  openPopup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeClickEsc);  
 };
 
 //функция закрытия попапа 
 const closePopup = (closePopup) => { 
   closePopup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeClickEsc);
  };
+
+ //функция закрытия попапа клик по фону
+ function clickOnBackground (evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
+  };
+ }
+
+ // функция перевод в не активное состояние кнопки Создать
+ function disableButtonSubmit () {
+  popupButtonSubmit.classList.add('.popup__submit_disablet');
+  popupButtonSubmit.disabled = true;
+ }
 
 // функция обработчик формы попапа редактирования профиля
 function handleProfileFormSubmit (evt) {
-    evt.preventDefault();
-    profileTitle.textContent = nameForm.value;
-    profileWork.textContent = workForm.value;
-    closePopup (popupButtonEdit);
+  evt.preventDefault();
+  profileTitle.textContent = nameForm.value;
+  profileWork.textContent = workForm.value;
+  closePopup (popupButtonEdit);
 }
 
 // функция для иnпутов
@@ -123,7 +149,7 @@ function addElement (evt) {
   closePopup (popupAddButton);
 };
 
-//вызовы функций открытия-закрытия
+//вызовы функций 
 openEditButton.addEventListener('click', function() {
   fillProfileInputs ();
   openPopup (popupButtonEdit)
@@ -150,6 +176,16 @@ popupCloseButtonZoom.addEventListener ('click', function () {
   closePopup (popupImage);
 });
 
+popupButtonEdit.addEventListener ('click', clickOnBackground);
+popupAddButton.addEventListener ('click', clickOnBackground);
+popupImage.addEventListener ('click', clickOnBackground);
+
+
+openAddButton.addEventListener ('click', function () {
+  disableButtonSubmit ();
+  imgAddForm.reset();
+  openPopup (popupAddButton);
+ });
 
 
 

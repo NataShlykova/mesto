@@ -1,0 +1,16 @@
+.popup__error-input {
+  width: 164px;
+  opacity: 0;
+  padding-top: 5px;
+  margin-bottom: 30px;
+}
+
+.popup__error-input:nth-of-type(2n) {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 750px) {
+  .popup__error-input:nth-of-type(2n) {
+    margin-bottom: 45px;
+  }
+}

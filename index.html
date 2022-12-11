@@ -35,24 +35,28 @@
   <!--Разметка для скрипта-->
   <!--Попап редактирования профиля-->
   <div class="popup popup_button_edit">
-    <div class="popup__container">
+    <div class="popup__container popup__click-overley">
       <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form" name="popup">
-        <input type="text" class="popup__input popup__input_string_name" name="name" placeholder="ваше имя">
-        <input type="text" class="popup__input popup__input_string_work" name="work" placeholder="ваша деятельность">
+      <form class="popup__form" name="formPopup" novalidate>
+        <input type="text" class="popup__input popup__input_string_name" name="name" minlength="2" maxlength="40" required id="inputStringName" placeholder="ваше имя">
+        <span class="popup__error-input  inputStringName-error"></span>
+        <input type="text" class="popup__input popup__input_string_work" name="work"  minlength="2" maxlength="200" required id="inputStringWork" placeholder="ваша деятельность">
+        <span class="popup__error-input inputStringWork-error"></span>
         <button type="submit" class="popup__submit">Сохранить</button>
       </form>
     </div>
   </div>
   <!--Попап - добавление нового места-->
   <div class="popup popup_add_button">
-    <div class="popup__container">
+    <div class="popup__container popup__click-overley">
       <button type="button" class="popup__close-button popup__close-button-add" aria-label="Закрыть"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form class="popup__form popup__form-addbutton" name="popup-addbutton">
-        <input type="text" class="popup__input popup__input_string_name-photo" name="name-photo" placeholder="Название места">
-        <input type="text" class="popup__input popup__input_string_link" name="link" placeholder="Ссылка на картинку">
+      <form class="popup__form popup__form-addbutton" name="formPopup" novalidate>
+        <input type="text" class="popup__input popup__input_string_name-photo" name="name-photo" minlength="2" maxlength="30" required id="strigNamePhoto" placeholder="Название места">
+        <span class="popup__error-input strigNamePhoto-error"></span>
+        <input type="url" class="popup__input popup__input_string_link" name="link-photo" minlength="2" maxlength="30" required id="stringLinkPhoto" placeholder="Ссылка на картинку">
+        <span class="popup__error-input stringLinkPhoto-error"></span>
         <button type="submit" class="popup__submit">Создать</button>
       </form>
     </div>
@@ -70,7 +74,7 @@
   </template>
   <!--Раскрытие изображения-->
   <div class="popup popup_image">
-    <div class="popup__image-container">
+    <div class="popup__image-container popup__click-overley">
     <div class="popup__image-zoom">
       <button type="button" class="popup__close-button popup__close-button-zoom" aria-label="Закрыть изображение"></button>
       <img class="popup__img" src="#" alt="">
@@ -79,5 +83,6 @@
   </div>
   </div>
   <script src="./scripts/index.js" defer></script>
+  <script src="./scripts/validate.js" defer></script>
   </body>
   </html>
