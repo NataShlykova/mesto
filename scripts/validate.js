@@ -1,4 +1,4 @@
-const errorInTheField = (formElement, inputElement, errorMessage, {inputErrorClass, errorClass}) => {
+const showErrorInTheField = (formElement, inputElement, errorMessage, {inputErrorClass, errorClass}) => {
     const errorField = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(inputErrorClass);
     errorField.textContent = errorMessage;
@@ -12,22 +12,22 @@ const errorInTheField = (formElement, inputElement, errorMessage, {inputErrorCla
     errorField.textContent = '';
   };
   
-  const findOutTheCorrectInput = (formElement, inputElement, combination) => {
+  const toggleInputErrorState = (formElement, inputElement, combination) => {
     if (!inputElement.validity.valid) {
-      errorInTheField (formElement, inputElement, inputElement.validationMessage, combination);
+        showErrorInTheField (formElement, inputElement, inputElement.validationMessage, combination);
     } else {
       hideTheError (formElement, inputElement, combination);
     }
   };
   
-  const listenEventClick = (formElement, {inputSelector, submitButtonSelector, ...combination}) => {
+  const listenInputEvent = (formElement, {inputSelector, submitButtonSelector, ...combination}) => {
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
     const buttonField = formElement.querySelector (submitButtonSelector);
-    switchButton(inputList, buttonField, combination);
+    switchButtonState(inputList, buttonField, combination);
     inputList.forEach(function (inputElement) {
      inputElement.addEventListener('input', function () {
-      findOutTheCorrectInput (formElement, inputElement, combination);
-      switchButton(inputList, buttonField, combination);
+        toggleInputErrorState (formElement, inputElement, combination);
+        switchButtonState(inputList, buttonField, combination);
      });
    });
   };
@@ -35,29 +35,34 @@ const errorInTheField = (formElement, inputElement, errorMessage, {inputErrorCla
   const enableValidation = ({formSelector, ...combination}) => {
     const formList = Array.from(document.querySelectorAll(formSelector));
     formList.forEach(function (formElement) {
-      formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-      });
       const fieldList = Array.from(document.querySelectorAll(formSelector));
       fieldList.forEach(function (field) {
-          listenEventClick (field, combination);
+        listenInputEvent (field, combination);
       });
     });
   };
   
-  const ifNotCorrect = (inputList) => {
+  const hasIncorrectInput = (inputList) => {
     return inputList.some(function (inputElement) {
       return !inputElement.validity.valid;
     });
   };
+
+  const enableButtonField = (buttonField, inactiveButtonClass) => {
+    buttonField.classList.remove (inactiveButtonClass);
+    buttonField.disabled = false;
+  }
+
+  const disableButtonField = (buttonField, inactiveButtonClass) => {
+    buttonField.classList.add (inactiveButtonClass);
+    buttonField.disabled = true;
+  }
   
-  const switchButton = (inputList, buttonField,{inactiveButtonClass}) => {
-    if (ifNotCorrect (inputList)) {
-      buttonField.classList.add (inactiveButtonClass);
-      buttonField.disabled = true;
+  const switchButtonState = (inputList, buttonField,{inactiveButtonClass}) => {
+    if (hasIncorrectInput (inputList)) {
+      disableButtonField(buttonField, inactiveButtonClass);
     } else {
-      buttonField.classList.remove (inactiveButtonClass);
-      buttonField.disabled = false;
+      enableButtonField(buttonField, inactiveButtonClass);
     }
   };
   

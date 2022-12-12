@@ -1,25 +1,26 @@
 const popupButtonEdit = document.querySelector('.popup_button_edit'); // попап редактирования профиля
 const openEditButton = document.querySelector('.profile__edit-button'); // кнопка редактирования профиля
 const profileCloseButton = document.querySelector('.popup__close-button'); // кнопка закрытия редактирования профиля
-const nameForm = document.querySelector('.popup__input_string_name'); // поле имени в попапе редактирования профиля
-const workForm = document.querySelector('.popup__input_string_work'); // поле деятельности в попапе редактирования профиля
-const inputForm = document.querySelector('.popup__form'); // форма попапа редактирования профиля
+
+const nameInput = document.querySelector('.popup__input_string_name'); // поле имени в попапе редактирования профиля
+const workInput = document.querySelector('.popup__input_string_work'); // поле деятельности в попапе редактирования профиля
+
+const popupFormEditProfile = document.querySelector('.popup__form'); // форма попапа редактирования профиля
 const profileTitle = document.querySelector('.profile__title'); // имя в профиле на странице
 const profileWork = document.querySelector('.profile__subtitle'); // название деятельности на странице
 const openAddButton = document.querySelector('.profile__add-button'); // кнопка добавления изображений на странице 
 const popupAddButton = document.querySelector('.popup_add_button'); // попап добавления изображений
-const popupButtonSubmit  =  popupAddButton.querySelector ('.popup__submit'); // кнопка СОЗДАТЬ в попапе добавления изображений
+const popupButtonAddSubmit  =  popupAddButton.querySelector ('.popup__submit'); // кнопка СОЗДАТЬ в попапе добавления изображений
 const popupCloseAddButton = document.querySelector('.popup__close-button-add'); // кнопка закрытия попапа добавления изображений
 const popupImage =document.querySelector('.popup_image'); //попап  изображения
 const popupCloseButtonZoom = document.querySelector('.popup__close-button-zoom'); // кнопка закрытия увеличенного изображения
 const sectionElements = document.querySelector('.elements'); //контейнер с изображениями на странице
-const imageElements = document.querySelector('#image-elements'); // клонирование изображений
+const cardTemplate = document.querySelector('#image-elements'); // клонирование изображений
 const imgAddForm = popupAddButton.querySelector('.popup__form');//форма попапа добавления изображений
 const elementParagraph = document.querySelector ('.popup__paragraph');// текст в попапе увеличенного изображения
 const popupBigImage = document.querySelector ('.popup__img'); // увеличенное изображение в попапе
-const strigNamePhoto = document.querySelector ('.popup__input_string_name-photo'); // поле ввода наименования места в попапе добавления изображения
+const stringNamePhoto = document.querySelector ('.popup__input_string_name-photo'); // поле ввода наименования места в попапе добавления изображения
 const stringLinkPhoto = document.querySelector ('.popup__input_string_link'); //поле ввода ссылки в попапе добавления изображения
-const popupOpened  = document.querySelector ('.popup_opened'); //файл для открытия попапа
 
 const initialElements = [  // изображения в массиве
     {
@@ -51,7 +52,7 @@ const initialElements = [  // изображения в массиве
  // функция звкрытия попапа нажатием на Escape
  function closeClickEsc (evt) {
   if (evt.key === 'Escape') {
-    closePopup (popupOpened);
+    closePopup (document.querySelector('.popup_opened'));
   }
  };
 
@@ -75,28 +76,28 @@ const closePopup = (closePopup) => {
  }
 
  // функция перевод в не активное состояние кнопки Создать
- function disableButtonSubmit () {
-  popupButtonSubmit.classList.add('.popup__submit_disablet');
-  popupButtonSubmit.disabled = true;
+ function disableAddButton () {
+  popupButtonAddSubmit.classList.add('.popup__submit_disablet');
+  popupButtonAddSubmit.disabled = true;
  }
 
 // функция обработчик формы попапа редактирования профиля
 function handleProfileFormSubmit (evt) {
   evt.preventDefault();
-  profileTitle.textContent = nameForm.value;
-  profileWork.textContent = workForm.value;
+  profileTitle.textContent = nameInput.value;
+  profileWork.textContent = workInput.value;
   closePopup (popupButtonEdit);
 }
 
 // функция для иnпутов
 function fillProfileInputs () {
-  nameForm.value = profileTitle.textContent;
-  workForm.value = profileWork.textContent;
+  nameInput.value = profileTitle.textContent;
+  workInput.value = profileWork.textContent;
 }
 
 // функция преобразования добавления изображений
 function createCard (item) {
-  const elementPhoto = imageElements.content.cloneNode(true);
+  const elementPhoto = cardTemplate.content.cloneNode(true);
   const elementText = elementPhoto.querySelector ('.element__text');
   elementText.textContent = item.name;
   const elementImage = elementPhoto.querySelector ('.element__image');
@@ -132,20 +133,15 @@ function toggleLike (evt) {
 
 //функция добавления новых изображений в начало секции 
 function renderInitialCards () {
-  const elements = initialElements.map(function (item) {
-  const newElement = createCard (item);
-  return newElement;  
-  })
-  sectionElements.append (...elements);
+  sectionElements.append(...initialElements.map(createCard));
 }
 
 function addElement (evt) {
   evt.preventDefault();
-  const newStringNamePhoto = strigNamePhoto.value;
+  const newStringNamePhoto = stringNamePhoto.value;
   const newStringLinkPhoto = stringLinkPhoto.value;
   const newElement = createCard ({name: newStringNamePhoto, link: newStringLinkPhoto});
   sectionElements.prepend(newElement);
-  imgAddForm.reset ();
   closePopup (popupAddButton);
 };
 
@@ -158,7 +154,7 @@ profileCloseButton.addEventListener ('click', function () {
   closePopup (popupButtonEdit)
 });
 
-inputForm.addEventListener ('submit', handleProfileFormSubmit);
+popupFormEditProfile.addEventListener ('submit', handleProfileFormSubmit);
 
 openAddButton.addEventListener ('click', function () {
   openPopup (popupAddButton)
@@ -182,25 +178,7 @@ popupImage.addEventListener ('click', clickOnBackground);
 
 
 openAddButton.addEventListener ('click', function () {
-  disableButtonSubmit ();
+  disableAddButton ();
   imgAddForm.reset();
   openPopup (popupAddButton);
  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
