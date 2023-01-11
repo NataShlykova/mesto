@@ -77,7 +77,7 @@ const closePopup = (closePopup) => {
 
  // функция перевод в не активное состояние кнопки Создать
  function disableAddButton () {
-  popupButtonAddSubmit.classList.add('.popup__submit_disablet');
+  popupButtonAddSubmit.classList.add('popup__submit_disablet');
   popupButtonAddSubmit.disabled = true;
  }
 
