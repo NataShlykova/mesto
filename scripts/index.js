@@ -21,7 +21,12 @@ const elementParagraph = document.querySelector ('.popup__paragraph');// тек�
 const popupBigImage = document.querySelector ('.popup__img'); // увеличенное изображение в попапе
 const stringNamePhoto = document.querySelector ('.popup__input_string_name-photo'); // поле ввода наименования места в попапе добавления изображения
 const stringLinkPhoto = document.querySelector ('.popup__input_string_link'); //поле ввода ссылки в попапе добавления изображения
-
+const selectors = {
+  inputSelector: '.popup__input',
+  submitButSelector: '.popup__submit',
+  activeButClass: 'popup__input_type_error',
+  errorClass: 'popup__error-input_active'
+}
 const initialElements = [  // изображения в массиве
     {
       name: 'БАО Алматы',
@@ -75,9 +80,9 @@ const closePopup = (closePopup) => {
   };
  }
 
- // функция перевод в не активное состояние кнопки Создать
+ // функция перевод в не активное состояние кнопки Создать----------------
  function disableAddButton () {
-  popupButtonAddSubmit.classList.add('popup__submit_disablet');
+  popupButtonAddSubmit.classList.add('popup__submit_disabled');
   popupButtonAddSubmit.disabled = true;
  }
 
@@ -95,55 +100,32 @@ function fillProfileInputs () {
   workInput.value = profileWork.textContent;
 }
 
-// функция преобразования добавления изображений
-function createCard (item) {
-  const elementPhoto = cardTemplate.content.cloneNode(true);
-  const elementText = elementPhoto.querySelector ('.element__text');
-  elementText.textContent = item.name;
-  const elementImage = elementPhoto.querySelector ('.element__image');
-  elementImage.src = item.link;
-  elementImage.alt = item.name;
-  const elementButtonDelete = elementPhoto.querySelector ('.element__button-delete');
-  elementButtonDelete.addEventListener ('click', deleteElementPhoto);
-  const elementButtonLike = elementPhoto.querySelector ('.element__button');
-  elementButtonLike.addEventListener ('click', toggleLike);
-  elementImage.addEventListener ('click', function () {
-   openPopupBigImage (item);
-  });
-  return elementPhoto;
-};
-
-//функция открытия большого изображения
-function openPopupBigImage (data) {
- elementParagraph.textContent =  data.name;
- popupBigImage.src = data.link;
- popupBigImage.alt = data.name;
- openPopup (popupImage);
-}
-
-//функция удаления изображений
-function deleteElementPhoto (evt) {
- evt.target.closest ('.element').remove();
-}
-
-// функция для лайка
-function toggleLike (evt) {
-  evt.target.classList.toggle('element__button_active');
-}
-
-//функция добавления новых изображений в начало секции 
-function renderInitialCards () {
-  sectionElements.append(...initialElements.map(createCard));
-}
-
 function addElement (evt) {
   evt.preventDefault();
-  const newStringNamePhoto = stringNamePhoto.value;
-  const newStringLinkPhoto = stringLinkPhoto.value;
-  const newElement = createCard ({name: newStringNamePhoto, link: newStringLinkPhoto});
-  sectionElements.prepend(newElement);
+  const newValues = {
+    name: stringNamePhoto.value,
+    link: stringLinkPhoto.value
+  }
+  
+  handlerAddElement(newValues);
+  imgAddForm.reset();
   closePopup (popupAddButton);
 };
+
+const handlerAddElement = (item) => {
+  const newElement = new Card (item, '#image-elements');
+  newElement.renderCard(sectionElements);
+}
+
+initialElements.reverse().forEach((item) => {
+  handlerAddElement (item)
+});
+
+const profileFormValidate = new FormValidator (selectors, popupFormEditProfile);
+profileFormValidate.enableValidation();
+
+const elementAddFormValidate = new FormValidator (selectors, imgAddForm);
+elementAddFormValidate.enableValidation();
 
 //вызовы функций 
 openEditButton.addEventListener('click', function() {
@@ -164,8 +146,6 @@ popupCloseAddButton.addEventListener ('click', function () {
   closePopup (popupAddButton)
 });
 
-renderInitialCards ();
-
 imgAddForm.addEventListener('submit', addElement);
 
 popupCloseButtonZoom.addEventListener ('click', function () {
@@ -182,3 +162,7 @@ openAddButton.addEventListener ('click', function () {
   imgAddForm.reset();
   openPopup (popupAddButton);
  });
+
+export {popupBigImage, elementParagraph, popupImage, openPopup};
+import {Card} from './card.js';
+import {FormValidator} from './FormValidator.js';
