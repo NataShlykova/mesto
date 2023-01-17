@@ -1,3 +1,5 @@
+
+
 class FormValidator {
     constructor (info, formElement) {
         this._inputSelector = info.inputSelector;
@@ -57,7 +59,7 @@ class FormValidator {
     }
 
     disabledSubmitButton () {
-        this._buttonElement.classList.remove(this._activeButClass);
+        this._buttonElement.classList.remove();
         this._buttonElement.disabled = true;
     }
 

@@ -7,9 +7,7 @@
     <meta name="description" content="Данный сайт содержит информацию о красивейших местах планеты, с фото-галереей">
     <meta name="author" content="Наталья Шлыкова">
     <link rel="stylesheet" href="./pages/index.css">
-    <script type="module" src="./scripts/FormValidator.js" defer></script>
     <script type="module" src="./scripts/index.js" defer></script>
-    <script type="module" src="./scripts/card.js" defer></script>
     <title lang="en">Mesto</title>
 </head>
 <body class="page">
@@ -41,7 +39,7 @@
     <div class="popup__container popup__click-overley">
       <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form" name="formPopup" novalidate>
+      <form class="popup__form" name="formPopupEditProfile" novalidate>
         <input type="text" class="popup__input popup__input_string_name" name="cardsName" minlength="2" maxlength="40" required id="inputStringName" placeholder="ваше имя">
         <span class="popup__error-input  inputStringName-error"></span>
         <input type="text" class="popup__input popup__input_string_work" name="cardsWork"  minlength="2" maxlength="200" required id="inputStringWork" placeholder="ваша деятельность">
@@ -55,7 +53,7 @@
     <div class="popup__container popup__click-overley">
       <button type="button" class="popup__close-button popup__close-button-add" aria-label="Закрыть"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form class="popup__form popup__form-addbutton" name="formPopup" novalidate>
+      <form class="popup__form popup__form-addbutton" name="formPopupAddCard" novalidate>
         <input type="text" class="popup__input popup__input_string_name-photo" name="name-photo" minlength="2" maxlength="30" required id="strigNamePhoto" placeholder="Название места">
         <span class="popup__error-input strigNamePhoto-error"></span>
         <input type="url" class="popup__input popup__input_string_link" name="link-photo" required id="stringLinkPhoto" placeholder="Ссылка на картинку">

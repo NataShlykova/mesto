@@ -1,4 +1,12 @@
-class Card {
+    import {openPopup} from './utils.js';
+    import {
+        popupBigImage,
+        elementParagraph,
+        popupImage
+    } from './container.js';
+
+
+    class Card {
     constructor (info, cardSelector) {
         this._name = info.name;
         this._link = info.link;
@@ -6,7 +14,7 @@ class Card {
     }
 
     _getCardTemplate() {
-        this._type = document
+        this._element = document
         .querySelector(this._cardSelector)
         .content
         .querySelector('.element')
@@ -16,27 +24,27 @@ class Card {
     renderCard(list) {
         this._getCardTemplate()
         this._setEventListeners()
-        this._cardImage = this._type.querySelector('.element__image')
+        this._cardImage = this._element.querySelector('.element__image')
         this._cardImage.src = this._link
         this._cardImage.alt = this.name
-        this._type.querySelector('.element__text').textContent = this._name
-        list.prepend(this._type)
+        this._element.querySelector('.element__text').textContent = this._name
+        list.prepend(this._element)
     }
 
     _setEventListeners() {
-        this._type
+        this._element
         .querySelector('.element__button-delete')
         .addEventListener ('click', () => {
-            this._handlerDeleteCard()
+            this._element.remove()
         })
 
-        this._type
+        this._element
         .querySelector('.element__button')
         .addEventListener ('click', () => {
             this._handlerLikeCard()
         })
 
-        this._type
+        this._element
         .querySelector('.element__image')
         .addEventListener ('click', () => {
             this._handlerOpenPopupImage()
@@ -44,7 +52,7 @@ class Card {
     }
 
     _handlerLikeCard() {
-        this._type
+        this._element
         .querySelector('.element__button')
         .classList
         .toggle('element__button_active')
@@ -52,16 +60,14 @@ class Card {
 
     _handlerOpenPopupImage() {
         popupBigImage.src = this._link
+        popupBigImage.alt = this._name
         elementParagraph.textContent = this._name
         openPopup (popupImage)
     }
 
     _handlerDeleteCard() {
-        this._type
-        .closest('.element')
-        .remove()
+        this._element = null;
     }
 }
 
 export {Card};
-import {popupBigImage, elementParagraph, popupImage,openPopup} from './index.js';
