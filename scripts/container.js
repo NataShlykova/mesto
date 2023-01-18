@@ -11,7 +11,7 @@ const workInput = document.querySelector('.popup__input_string_work'); // пол
 const popupFormEditProfile = document.querySelector('.popup__form'); // форма попапа редактирования профиля
 const profileTitle = document.querySelector('.profile__title'); // имя в профиле на странице
 const profileWork = document.querySelector('.profile__subtitle'); // название деятельности на странице
-const ButtonAddCard = document.querySelector('.profile__add-button'); // кнопка добавления изображений на странице 
+const buttonAddCard = document.querySelector('.profile__add-button'); // кнопка добавления изображений на странице 
 const popupAddButton = document.querySelector('.popup_add_button'); // попап добавления изображений
 const popupButtonAddSubmit  =  popupAddButton.querySelector ('.popup__submit'); // кнопка СОЗДАТЬ в попапе добавления изображений
 const popupCloseAddButton = document.querySelector('.popup__close-button-add'); // кнопка закрытия попапа добавления изображений
@@ -74,7 +74,7 @@ export {
     popupFormEditProfile,
     profileTitle,
     profileWork,
-    ButtonAddCard,
+    buttonAddCard,
     popupButtonAddSubmit,
     popupCloseAddButton,
     popupCloseButtonZoom,

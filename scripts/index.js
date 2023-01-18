@@ -11,7 +11,7 @@ import {
     popupFormEditProfile,
     profileTitle,
     profileWork,
-    ButtonAddCard,
+    buttonAddCard,
     popupButtonAddSubmit,
     popupCloseAddButton,
     popupCloseButtonZoom,
@@ -23,13 +23,6 @@ import {
     initialElements,
     popupAddButton
 } from './container.js';
-
-
-
-
-
-
-
 
  //функция закрытия попапа клик по фону
  function clickOnBackground (evt) {
@@ -96,9 +89,10 @@ profileCloseButton.addEventListener ('click', function () {
 
 popupFormEditProfile.addEventListener ('submit', handleProfileFormSubmit);
 
-ButtonAddCard.addEventListener ('click', function () {
+buttonAddCard.addEventListener ('click', function () {
   elementAddFormValidate.disabledSubmitButton();
   openPopup (popupAddButton);
+  imgAddForm.reset();
 });
 
 popupCloseAddButton.addEventListener ('click', function () {
@@ -115,9 +109,3 @@ popupButtonEdit.addEventListener ('click', clickOnBackground);
 popupAddButton.addEventListener ('click', clickOnBackground);
 popupImage.addEventListener ('click', clickOnBackground);
 
-
-ButtonAddCard.addEventListener ('click', function () {
-  disableAddButton ();
-  imgAddForm.reset();
-  openPopup (popupAddButton);
- });

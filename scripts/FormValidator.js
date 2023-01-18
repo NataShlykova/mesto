@@ -59,13 +59,12 @@ class FormValidator {
     }
 
     disabledSubmitButton () {
-        this._buttonElement.classList.remove();
+        this._buttonElement.classList.add('popup__submit_disabled');
         this._buttonElement.disabled = true;
     }
 
     enableSubmitButton () {
-        this._buttonElement.classList.remove ('popup__submit_disabled');
-        this._buttonElement.classList.remove(this._activeButClass);
+        this._buttonElement.classList.remove('popup__submit_disabled');
         this._buttonElement.disabled = false;
     }
 
