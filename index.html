@@ -7,7 +7,7 @@
     <meta name="description" content="Данный сайт содержит информацию о красивейших местах планеты, с фото-галереей">
     <meta name="author" content="Наталья Шлыкова">
     <link rel="stylesheet" href="./pages/index.css">
-    <script type="module" src="./scripts/index.js" defer></script>
+    <script type="module" src="./pages/index.js" defer></script>
     <title lang="en">Mesto</title>
 </head>
 <body class="page">
@@ -17,7 +17,7 @@
   <main class="content">
     <section class="profile">
       <div class="profile__avatar">
-        <img class="profile__avatar-image" src="./images/imagekusto.jpg" alt="Аватар">
+        <img class="profile__avatar-image" src= "./images/imagekusto.jpg" alt="Аватар">
         <div class="profile__info">
           <div class="profile__name">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -54,9 +54,9 @@
       <button type="button" class="popup__close-button popup__close-button-add" aria-label="Закрыть"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form popup__form-addbutton" name="formPopupAddCard" novalidate>
-        <input type="text" class="popup__input popup__input_string_name-photo" name="name-photo" minlength="2" maxlength="30" required id="strigNamePhoto" placeholder="Название места">
+        <input type="text" class="popup__input popup__input_string_name-photo" name="name" minlength="2" maxlength="30" required id="strigNamePhoto" placeholder="Название места">
         <span class="popup__error-input strigNamePhoto-error"></span>
-        <input type="url" class="popup__input popup__input_string_link" name="link-photo" required id="stringLinkPhoto" placeholder="Ссылка на картинку">
+        <input type="url" class="popup__input popup__input_string_link" name="link" required id="stringLinkPhoto" placeholder="Ссылка на картинку">
         <span class="popup__error-input stringLinkPhoto-error"></span>
         <button type="submit" class="popup__submit">Создать</button>
       </form>

@@ -44,7 +44,8 @@ class FormValidator {
         if (this._hasInvalidInput (this._inputList)) {
             this.disabledSubmitButton ();
         } else {
-            this.enableSubmitButton();
+            this._buttonElement.classList.remove(this._activeButClass)
+            this._buttonElement.disabled = false
         }
     }
 
@@ -58,14 +59,15 @@ class FormValidator {
         })
     }
 
-    disabledSubmitButton () {
-        this._buttonElement.classList.add('popup__submit_disabled');
-        this._buttonElement.disabled = true;
+    handleErrorElements () {
+        this._inputList.forEach(inputElement => {
+            this._removeError(inputElement)
+        })
     }
 
-    enableSubmitButton () {
-        this._buttonElement.classList.remove('popup__submit_disabled');
-        this._buttonElement.disabled = false;
+    disabledSubmitButton () {
+        this._buttonElement.classList.add(this._activeButClass);
+        this._buttonElement.disabled = true;
     }
 
     enableValidation () {

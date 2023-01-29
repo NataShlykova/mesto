@@ -1,16 +1,9 @@
-    import {openPopup} from './utils.js';
-    import {
-        popupBigImage,
-        elementParagraph,
-        popupImage
-    } from './container.js';
-
-
     class Card {
-    constructor (info, cardSelector) {
-        this._name = info.name;
-        this._link = info.link;
-        this._cardSelector = cardSelector;
+    constructor ({data, handlerCardClick}, cardSelector) {
+        this._name = data.name
+        this._link = data.link
+        this._cardSelector = cardSelector
+        this._handlerCardClick = handlerCardClick
     }
 
     _getCardTemplate() {
@@ -21,21 +14,21 @@
         .cloneNode(true)
     }
 
-    renderCard(list) {
+    renderCard() {
         this._getCardTemplate()
         this._setEventListeners()
         this._cardImage = this._element.querySelector('.element__image')
         this._cardImage.src = this._link
         this._cardImage.alt = this.name
         this._element.querySelector('.element__text').textContent = this._name
-        list.prepend(this._element)
+        return this._element
     }
 
     _setEventListeners() {
         this._element
         .querySelector('.element__button-delete')
         .addEventListener ('click', () => {
-            this._element.remove()
+            this._handlerDeleteCard()
         })
 
         this._element
@@ -47,7 +40,10 @@
         this._element
         .querySelector('.element__image')
         .addEventListener ('click', () => {
-            this._handlerOpenPopupImage()
+            this._handlerCardClick({
+                name: this._name,
+                src: this._link
+            })
         })
     }
 
@@ -66,7 +62,9 @@
     }
 
     _handlerDeleteCard() {
-        this._element = null;
+        this._element
+        .closest('.element')
+        .remove()
     }
 }
 

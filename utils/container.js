@@ -28,7 +28,8 @@ const stringLinkPhoto = document.querySelector ('.popup__input_string_link'); //
 const selectors = {
     inputSelector: '.popup__input',
     submitButSelector: '.popup__submit',
-    activeButClass: 'popup__input_type_error',
+    activeButClass: 'popup__submit_disabled',
+    inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error-input_active'
 }
 
@@ -59,6 +60,15 @@ const initialElements = [  // изображения в массиве
     }
   ];
 
+  const cardSelector = '#image-elements';
+  const popupPicSelector = '.popup_image';
+  const elementContainerSelect = '.elements';
+  const profileNameSelector = '.profile__title';
+  const profileAboutSelector = '.profile__subtitle';
+  const popupCardAddSelector = '.popup_add_button';
+  const popupProfileEditSelector = '.popup_button_edit';
+
+
 
 
 
@@ -85,5 +95,12 @@ export {
     stringLinkPhoto,
     selectors,
     initialElements,
-    popupAddButton
+    popupAddButton,
+    cardSelector,
+    popupPicSelector,
+    elementContainerSelect,
+    profileNameSelector,
+    profileAboutSelector,
+    popupCardAddSelector,
+    popupProfileEditSelector
 };
