@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Данный сайт содержит информацию о красивейших местах планеты, с фото-галереей">
-    <meta name="author" content="Наталья Шлыкова">
-    <link rel="stylesheet" href="./pages/index.css">
-    <script type="module" src="./pages/index.js" defer></script>
-    <title lang="en">Mesto</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Данный сайт содержит информацию о красивейших местах планеты, с фото-галереей">
+  <meta name="author" content="Наталья Шлыкова">
+
+  <title lang="en">Mesto</title>
 </head>
+
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип Место">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Место">
   </header>
   <main class="content">
     <section class="profile">
-      <div class="profile__avatar">
-        <img class="profile__avatar-image" src= "./images/imagekusto.jpg" alt="Аватар">
+      <div class="profile__avatar">D
+        <img class="profile__avatar-image" src="<%=require('./images/imagekusto.jpg')%>" alt="Аватар">
         <div class="profile__info">
           <div class="profile__name">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -40,9 +41,11 @@
       <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="popup__form" name="formPopupEditProfile" novalidate>
-        <input type="text" class="popup__input popup__input_string_name" name="cardsName" minlength="2" maxlength="40" required id="inputStringName" placeholder="ваше имя">
+        <input type="text" class="popup__input popup__input_string_name" name="cardsName" minlength="2" maxlength="40"
+          required id="inputStringName" placeholder="ваше имя">
         <span class="popup__error-input  inputStringName-error"></span>
-        <input type="text" class="popup__input popup__input_string_work" name="cardsWork"  minlength="2" maxlength="200" required id="inputStringWork" placeholder="ваша деятельность">
+        <input type="text" class="popup__input popup__input_string_work" name="cardsWork" minlength="2" maxlength="200"
+          required id="inputStringWork" placeholder="ваша деятельность">
         <span class="popup__error-input inputStringWork-error"></span>
         <button type="submit" class="popup__submit">Сохранить</button>
       </form>
@@ -54,9 +57,11 @@
       <button type="button" class="popup__close-button popup__close-button-add" aria-label="Закрыть"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form popup__form-addbutton" name="formPopupAddCard" novalidate>
-        <input type="text" class="popup__input popup__input_string_name-photo" name="name" minlength="2" maxlength="30" required id="strigNamePhoto" placeholder="Название места">
+        <input type="text" class="popup__input popup__input_string_name-photo" name="name" minlength="2" maxlength="30"
+          required id="strigNamePhoto" placeholder="Название места">
         <span class="popup__error-input strigNamePhoto-error"></span>
-        <input type="url" class="popup__input popup__input_string_link" name="link" required id="stringLinkPhoto" placeholder="Ссылка на картинку">
+        <input type="url" class="popup__input popup__input_string_link" name="link" required id="stringLinkPhoto"
+          placeholder="Ссылка на картинку">
         <span class="popup__error-input stringLinkPhoto-error"></span>
         <button type="submit" class="popup__submit">Создать</button>
       </form>
@@ -76,12 +81,14 @@
   <!--Раскрытие изображения-->
   <div class="popup popup_image">
     <div class="popup__image-container popup__click-overley">
-    <div class="popup__image-zoom">
-      <button type="button" class="popup__close-button popup__close-button-zoom" aria-label="Закрыть изображение"></button>
-      <img class="popup__img" src="#" alt="">
-      <p class="popup__paragraph"></p>
+      <div class="popup__image-zoom">
+        <button type="button" class="popup__close-button popup__close-button-zoom"
+          aria-label="Закрыть изображение"></button>
+        <img class="popup__img" src="#" alt="">
+        <p class="popup__paragraph"></p>
+      </div>
     </div>
   </div>
-  </div>
-  </body>
-  </html>
+</body>
+
+</html>

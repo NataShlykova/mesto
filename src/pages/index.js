@@ -1,4 +1,4 @@
-
+import '../pages/index.css';
 import {Card} from '../scripts/card.js';
 import {FormValidator} from '../scripts/FormValidator.js';
 import {

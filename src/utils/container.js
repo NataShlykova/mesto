@@ -1,3 +1,10 @@
+import iconBaoLink from '../images/6images/bao.jpg';
+import iconAlmatyLink from '../images/6images/almaty.jpg';
+import iconSyberiaLink from '../images/6images/syberia.jpg';
+import iconBayterekLink from '../images/6images/bayterek.jpg';
+import iconCharynLink from '../images/6images/charyn.jpg';
+import iconShymbulakLink from '../images/6images/shymbulak.jpg';
+
 const popupBigImage = document.querySelector ('.popup__img'); // увеличенное изображение в попапе
 const elementParagraph = document.querySelector ('.popup__paragraph');// текст в попапе увеличенного изображения
 const popupImage =document.querySelector('.popup_image'); //попап  изображения
@@ -36,27 +43,27 @@ const selectors = {
 const initialElements = [  // изображения в массиве
     {
       name: 'БАО Алматы',
-      link: './images/6images/бао.jpg'
+      link: iconBaoLink
     },
     {
       name: 'Сибирь',
-      link: './images/6images/сибирь.jpg'
+      link: iconSyberiaLink
     },
     {
       name: 'Алматы',
-      link: './images/6images/алматы.jpg'
+      link: iconAlmatyLink
     },
     {
       name: 'Чарынский каньон',
-      link: './images/6images/чарын.jpg'
+      link: iconCharynLink
     },
     {
       name: 'Астана',
-      link: './images/6images/Байтерек.jpg'
+      link: iconBayterekLink
     },
     {
       name: 'Чимбулак',
-      link: './images/6images/чимбулак.jpg'
+      link: iconShymbulakLink
     }
   ];
 
