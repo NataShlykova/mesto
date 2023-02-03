@@ -39,7 +39,7 @@ const createCard = (item) => {
   const card = new Card ( {
     data: item,
     handlerCardClick: _ => {
-      popupPic.open(item)
+      popupPic.open(item.name, item.link)
     }
   }, cardSelector)
   return card;
@@ -65,10 +65,14 @@ const popupFormAddCard = new PopupWithForm (popupCardAddSelector, newValues => {
 })
 popupFormAddCard.setEventListeners();
 
+
 const popupFormProfileEdit = new PopupWithForm (popupProfileEditSelector, _ => {
-  userInfo.setUserInfo(nameInput, workInput)
+  const userData = userInfo.getUserInfo();
 })
+
 popupFormProfileEdit.setEventListeners();
+
+
 
 buttonAddCard.addEventListener('click', _ => {
   cardAddFormValidator.handleErrorElements()

@@ -12,9 +12,9 @@ class UserInfo {
         return this._userItem
     }
 
-    setUserInfo (profNameInput, profAboutInput) {
-        this._profileName.textContent = profNameInput.value;
-        this._profileInfo.textContent = profAboutInput.value
+    setUserInfo (data) {
+        this._profileName.textContent = data.name;
+        this._profileInfo.textContent = data.work;
     }
 }
 
