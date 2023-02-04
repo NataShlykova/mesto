@@ -22,6 +22,7 @@ import { PopupWithForm } from '../scripts/popupWithForm.js';
 import { PopupWithImage } from '../scripts/popupWithImage.js';
 import { Section } from '../scripts/section.js';
 import { UserInfo } from '../scripts/UserInfo.js';
+import { data } from 'autoprefixer';
 
 
 const profileEditFormValidator = new FormValidator(selectors, popupFormEditProfile);
@@ -65,14 +66,14 @@ const popupFormAddCard = new PopupWithForm (popupCardAddSelector, newValues => {
 })
 popupFormAddCard.setEventListeners();
 
-
 const popupFormProfileEdit = new PopupWithForm (popupProfileEditSelector, _ => {
-  const userData = userInfo.getUserInfo();
+  const inputs = {
+    name : nameInput.value,
+    work : workInput.value
+  }
+  userInfo.setUserInfo(inputs);
 })
-
 popupFormProfileEdit.setEventListeners();
-
-
 
 buttonAddCard.addEventListener('click', _ => {
   cardAddFormValidator.handleErrorElements()
@@ -83,6 +84,6 @@ popupProfileOpenButton.addEventListener ('click', _ => {
   const userData = userInfo.getUserInfo()
   profileEditFormValidator.handleErrorElements()
   nameInput.value = userData.name
-  workInput.value = userData.info
-  popupFormProfileEdit.open()
+  workInput.value = userData.info;
+  popupFormProfileEdit.open() 
 })
