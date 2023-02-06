@@ -57,7 +57,6 @@ const cardElements = new Section ( {
 )
 cardElements.render();
 
-
 const popupFormAddCard = new PopupWithForm (popupCardAddSelector, newValues => {
   const card = createCard(newValues);
   const cardElement = card.renderCard();
@@ -66,13 +65,11 @@ const popupFormAddCard = new PopupWithForm (popupCardAddSelector, newValues => {
 })
 popupFormAddCard.setEventListeners();
 
-const popupFormProfileEdit = new PopupWithForm (popupProfileEditSelector, _ => {
-  const inputs = {
-    name : nameInput.value,
-    work : workInput.value
-  }
-  userInfo.setUserInfo(inputs);
-})
+const popupFormProfileEdit = new PopupWithForm (
+  popupProfileEditSelector, 
+  values => {
+    userInfo.setUserInfo(values);
+  })
 popupFormProfileEdit.setEventListeners();
 
 buttonAddCard.addEventListener('click', _ => {

@@ -13,8 +13,8 @@ class UserInfo {
     }
 
     setUserInfo (data) {
-        this._profileName.textContent = data.name;
-        this._profileInfo.textContent = data.work;
+        this._profileName.textContent = data.cardsName;
+        this._profileInfo.textContent = data.cardsWork;
     }
 }
 
