@@ -1,78 +1,80 @@
-
-
 class FormValidator {
-    constructor (info, formElement) {
-        this._inputSelector = info.inputSelector;
-        this._submitButSelector = info.submitButSelector;
-        this._activeButClass = info.activeButClass;
-        this._inputErrorClass = info.inputErrorClass;
-        this._errorClass = info.errorClass;
-        this._formElement = formElement;
-        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-        this._buttonElement = this._formElement.querySelector(this._submitButSelector);
-    }
+  constructor(data, formElement) {
+    this._inputSelector = data.inputSelector
+    this._submitButtonSelector = data.submitButtonSelector
+    this._inactiveButtonClass = data.inactiveButtonClass
+    this._inputErrorClass = data.inputErrorClass
+    this._errorClass = data.errorClass
+    this._formElement = formElement
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector))
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector)
+  }
 
-    _pointError (inputElement, errorMessage) {
-        const errorText = this._formElement.querySelector(`.${inputElement.id}-error`);
-        inputElement.classList.add(this._inputErrorClass);
-        errorText.classList.add(this._errorClass);
-        errorText.textContent = errorMessage;
-    }
+  _showError(inputElement, errorMessage) {
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`)
+    inputElement.classList.add(this._inputErrorClass)
+    errorElement.classList.add(this._errorClass)
+    errorElement.textContent = errorMessage
+  }
 
-    _removeError (inputElement){
-        const errorText = this._formElement.querySelector(`.${inputElement.id}-error`);
-        inputElement.classList.remove(this._inputErrorClass);
-        errorText.classList.remove(this._errorClass);
-        errorText.textContent = "";
-    }
+  _hideError(inputElement) {
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`)
+    inputElement.classList.remove(this._inputErrorClass)
+    errorElement.classList.remove(this._errorClass)
+    errorElement.textContent = ''
+  }
 
-    _checkInputValidity (inputElement) {
-        if (!inputElement.validity.valid) {
-            this._pointError(inputElement, inputElement.validationMessage)
-        } else {
-            this._removeError(inputElement);
-        }
-    }
+  _checkInputValidity(inputElement) {
+    if (!inputElement.validity.valid) {
+      this._showError(inputElement, inputElement.validationMessage)
+    } else
+      this._hideError(inputElement)
+  }
 
-    _hasInvalidInput (inputList) {
-        return inputList.some ((inputElement) => {
-            return !inputElement.validity.valid
-        })
-    }
+  _hasInvalidInput(inputList) {
+    return inputList.some((inputElement) => {
+      return !inputElement.validity.valid
+    })
+  }
 
-    _toggleButtonState () {
-        if (this._hasInvalidInput (this._inputList)) {
-            this.disabledSubmitButton ();
-        } else {
-            this._buttonElement.classList.remove(this._activeButClass)
-            this._buttonElement.disabled = false
-        }
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._inputList)) {
+      this.disableSubmitButton()
+    } else {
+      this._buttonElement.classList.remove(this._inactiveButtonClass)
+      this._buttonElement.disabled = false
     }
+  }
 
-    _setEventListeners () {
-        this._toggleButtonState ();
-        this._inputList.forEach ((inputElement) => {
-            inputElement.addEventListener ('input', () => {
-                this._checkInputValidity (inputElement);
-                this._toggleButtonState ();
-            })
-        })
-    }
+  _setIventListeners() {
+    this._toggleButtonState()
+    this._inputList.forEach((inputElement) => {
+      inputElement.addEventListener('input', () => {
+        this._checkInputValidity(inputElement)
+        this._toggleButtonState()
+      })
+    })
+  }
 
-    handleErrorElements () {
-        this._inputList.forEach(inputElement => {
-            this._removeError(inputElement)
-        })
-    }
+  removeErrors() {
+    this._inputList.forEach(inputElement => {
+      this._hideError(inputElement)
+    })
+  }
 
-    disabledSubmitButton () {
-        this._buttonElement.classList.add(this._activeButClass);
-        this._buttonElement.disabled = true;
-    }
+  disableSubmitButton() {
+    this._buttonElement.classList.add(this._inactiveButtonClass)
+    this._buttonElement.disbaled = true;
+  }
 
-    enableValidation () {
-        this._setEventListeners()
-    }
+  enableSubmitButton() { // исправляет баг, когда при открытии попапа форма валидна, а кнопка неактивна
+    this._buttonElement.classList.remove(this._inactiveButtonClass)
+    this._buttonElement.disbaled = false
+  }
+
+  enableValidation() {
+    this._setIventListeners()
+  }
 }
 
-export {FormValidator};
+export { FormValidator };

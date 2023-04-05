@@ -3,6 +3,8 @@
   height: 33px;
   object-fit: contain;
   display: block;
+  background-image: url(../../../images/logo.svg);
+  background-size: inherit;
 }
 
 @media screen and (max-width: 950px) {
@@ -11,9 +13,9 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+/*@media screen and (max-width: 750px) {
   .header__logo {
     width: 103.74px;
     height: 24.4px;
   }
-}
+}*/
