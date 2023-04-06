@@ -19,6 +19,8 @@ class Card {
       .content
       .querySelector('.element')
       .cloneNode(true)
+    this._likeButton = this._view.querySelector('.element__button')
+    this._likeCount = this._view.querySelector('.element__like-count')
   }
 
   //Публичный метод отрисовки карточки
@@ -44,14 +46,11 @@ class Card {
 
   //Лайк
   handleLikeCard() {
-    const likeButton = this._view.querySelector('.element__button')
-    const likeCount = this._view.querySelector('.element__like-count')
-
-    if (!(likeButton.classList.contains('element__button_active'))) {
+    if (!(this._likeButton.classList.contains('element__button_active'))) {
       this._api.like(this._id)
         .then((data) => {
-          likeButton.classList.add('element__button_active')
-          likeCount.textContent = data.likes.length
+          this._likeButton.classList.add('element__button_active')
+          this._likeCount.textContent = data.likes.length
         })
         .catch((err) => {
           console.log(err)
@@ -59,8 +58,8 @@ class Card {
     } else {
       this._api.dislike(this._id)
         .then((data) => {
-          likeButton.classList.remove('element__button_active')
-          likeCount.textContent = data.likes.length
+          this._likeButton.classList.remove('element__button_active')
+          this._likeCount.textContent = data.likes.length
         })
         .catch((err) => {
           console.log(err)
